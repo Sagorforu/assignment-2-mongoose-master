@@ -5,7 +5,7 @@ const createUserIntoDB = async (user: User) => {
   const result = await UserModel.create(user);
   return result;
 };
-const getAllUsersIntoDB = async (user: User) => {
+const getAllUsersFromDB = async (user: User) => {
   const result = await UserModel.find(user, {
     username: 1,
     fullName: 1,
@@ -15,8 +15,13 @@ const getAllUsersIntoDB = async (user: User) => {
   });
   return result;
 };
+const getSingleUserFromDB = async (userId: number) => {
+  const result = await UserModel.findOne({ userId: userId });
+  return result;
+};
 
 export const userServices = {
   createUserIntoDB,
-  getAllUsersIntoDB,
+  getAllUsersFromDB,
+  getSingleUserFromDB,
 };
