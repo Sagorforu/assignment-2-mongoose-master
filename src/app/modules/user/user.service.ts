@@ -19,7 +19,7 @@ const getSingleUserFromDB = async (userId: number) => {
   const result = await UserModel.findOne({ userId: userId });
   return result;
 };
-const updateSingleUserFromDB = async (userId: number) => {
+const updateSingleUserIntoDB = async (userId: number) => {
   const result = await UserModel.updateOne({ userId: userId });
   return result;
 };
@@ -33,5 +33,5 @@ export const userServices = {
   getAllUsersFromDB,
   getSingleUserFromDB,
   deleteSingleUserFromDB,
-  updateSingleUserFromDB,
+  updateSingleUserIntoDB,
 };
