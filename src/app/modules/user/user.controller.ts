@@ -3,7 +3,7 @@ import { userServices } from './user.service';
 
 const createUser = async (req: Request, res: Response) => {
   try {
-    const { users: userData } = req.body;
+    const { user: userData } = req.body;
     const result = await userServices.createUserIntoDB(userData);
     res.status(200).json({
       success: true,
@@ -52,6 +52,25 @@ const getSingleUser = async (req: Request, res: Response) => {
     });
   }
 };
+const updateSingleUser = async (req: Request, res: Response) => {
+  try {
+    const { userId } = req.params;
+    const result = await userServices.updateSingleUserFromDB(
+      parseFloat(userId),
+    );
+    res.status(200).json({
+      success: true,
+      message: 'User updated successfully!',
+      data: result,
+    });
+  } catch (error) {
+    res.status(404).json({
+      success: false,
+      message: 'User not found',
+      error: error,
+    });
+  }
+};
 const deleteSingleUser = async (req: Request, res: Response) => {
   try {
     const { userId } = req.params;
@@ -77,4 +96,5 @@ export const userControllers = {
   getAllUsers,
   getSingleUser,
   deleteSingleUser,
+  updateSingleUser,
 };

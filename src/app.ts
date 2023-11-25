@@ -10,4 +10,6 @@ app.use(cors());
 // application routes
 app.use('/api/users', userRoutes);
 
+app.get('/');
+
 export default app;
