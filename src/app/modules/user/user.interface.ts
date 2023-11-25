@@ -1,15 +1,15 @@
 // import { Schema, model, connect } from 'mongoose';
 
-type UserFullName = {
+export type UserFullName = {
   firstName: string;
   lastName: string;
 };
-type UserAddress = {
+export type UserAddress = {
   street: string;
   city: string;
   country: string;
 };
-type UserOrders = {
+export type UserOrders = {
   productName: string;
   price: number;
   quantity: number;
@@ -27,5 +27,3 @@ export type User = {
   address: UserAddress;
   orders: UserOrders[];
 };
-
-export default User;
