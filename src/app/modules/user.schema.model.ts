@@ -1,4 +1,4 @@
-import { Schema, model, connect } from 'mongoose';
+import { Schema, model } from 'mongoose';
 
 import {
   User,
@@ -32,7 +32,8 @@ const userSchema = new Schema<User>({
   isActive: { type: Boolean, required: true },
   hobbies: [{ type: String, required: true }],
   address: addressSchema,
-  orders: [ordersSchema],
+  orders: [{ ordersSchema }],
 });
 
-export default userSchema;
+const UserModel = model<User>('User', userSchema);
+export default UserModel;
