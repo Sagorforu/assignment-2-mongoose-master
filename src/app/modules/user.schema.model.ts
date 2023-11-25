@@ -8,8 +8,8 @@ import {
 } from './user/user.interface';
 
 const userFullNameSchema = new Schema<UserFullName>({
-  firstName: { type: String, required: true },
-  lastName: { type: String, required: true },
+  firstName: { type: String, required: true, trim: true },
+  lastName: { type: String, required: true, trim: true },
 });
 const addressSchema = new Schema<UserAddress>({
   street: { type: String, required: true },
@@ -24,8 +24,8 @@ const ordersSchema = new Schema<UserOrders>({
 
 const userSchema = new Schema<User>({
   userId: { type: Number, required: true, unique: true },
-  username: { type: String, required: true, unique: true },
-  password: { type: String, required: true },
+  username: { type: String, required: true, unique: true, trim: true },
+  password: { type: String, required: true, trim: true },
   fullName: userFullNameSchema,
   age: { type: Number, required: true },
   email: { type: String, required: true },
